@@ -1,0 +1,48 @@
+
+APP_NAME = 风铃零食屋
+
+Default_User_Avatar = "https://img.alicdn.com/imgextra/i3/645151382/O1CN01vdw6ZC1M4zuxC3hzx_!!645151382.jpg"
+
+##文件存储临时目录
+Tmp_Path = ./tmp/
+
+##腾讯云Cos相关配置
+APP_ID =
+SECRET_ID =
+SECRET_KEY =
+COS_REGION =
+COS_BUCKET_NAME =
+COS_Url =
+
+##腾讯云短信相关配置
+SMS_APP_ID =
+SMS_APP_KEY =
+
+##Redis配置
+REDIS_ADDR = "127.0.0.1:6379"
+REDIS_PW = ""
+REDIS_DB = ""
+
+##mysql配置
+MYSQL_HOST = "127.0.0.1"
+MYSQL_HOST_PORT =""
+MYSQL_DB = ""
+MYSQL_USER_NAME = "root"
+MYSQL_USER_PASSWORD = "root"
+MYSQL_Loc = Asia%2FShanghai
+MYSQL_TIMEOUT = "10s"
+
+##数据库表前缀
+TABLE_PREFIX =
+
+GIN_MODE = "debug"
+
+
+##微信小程序登录
+WeChat_Appid =
+WeChat_Secret =
+
+##qq互联
+QQ_APPKEY =
+QQ_APPSECRET =
+QQ_REDIRECT_URL =
