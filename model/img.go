@@ -30,7 +30,7 @@ type ResImgList struct {
 func GetTagList() []ResTagInfo {
 	var tag int
 	var tagInfo []ResTagInfo
-	rows, _ := conf.DB.Debug().Raw("SELECT distinct img_tag from img").Rows()
+	rows, _ := conf.DB.Debug().Raw("SELECT distinct img_tag from img ORDER BY img_tag").Rows()
 	for rows.Next() {
 		_ = rows.Scan(&tag)
 		tagInfo = append(tagInfo, ResTagInfo{
@@ -53,6 +53,15 @@ func GetImgListForTag(tag, limit, page int) ResImgList {
 		conf.DB.Debug().Model(Img{}).Where("img_tag = ? ", tag).Order("created_at desc").Limit(limit).Offset((page - 1) * limit).Find(&resImgList.ImgList)
 		conf.DB.Debug().Model(Img{}).Where("img_tag = ? ", tag).Count(&resImgList.Count)
 		return resImgList
+	}
+}
+
+//根据oldTagId更新图片newTagId
+func ImgTagUpdate(oldTagId, newTagId int, imgId string) bool {
+	if conf.DB.Debug().Model(Img{}).Where("img_id = ? and img_tag = ? ", imgId, oldTagId).Update("img_tag", newTagId).RecordNotFound() {
+		return false
+	} else {
+		return true
 	}
 }
 

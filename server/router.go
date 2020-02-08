@@ -53,9 +53,18 @@ func NewRouter() *gin.Engine {
 		s.Use(middleware.TokenAuth())
 		s.Use(middleware.AdminAuth()) //是否管理员
 		{
+			//媒体库
 			s.GET("CakeList", admin.GetCakeList)
 			s.GET("TagList", admin.GetTagList)
 			s.GET("ImgList", admin.GetImgListForTag)
+			s.POST("ImgTagUpdate", admin.ImgTagUpdate)
+
+			//Banner
+			s.GET("BannerList", admin.GetBannerModule)
+			s.POST("CreateBanner", admin.CreateBanner)
+			s.POST("DeleteBanner", admin.DeleteBanner)
+			s.POST("UpdateBanner", admin.UpdateBanner)
+			s.POST("CreateBannerItem", admin.CreateBannerItem)
 		}
 
 		// 需要登录保护的（验证Token）

@@ -27,7 +27,7 @@ func AesDecrypt(ciphertext []byte, key, iv []byte) ([]byte, error) {
 	return origData, nil
 }
 
-type WxUserInfo struct{
+type WxUserInfo struct {
 	OpenID    string `json:"openid"`
 	NickName  string `json:"nickName"`
 	Gender    int    `json:"gender"`
