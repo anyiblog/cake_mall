@@ -16,8 +16,8 @@ func NewRouter() *gin.Engine {
 
 	{
 		//根接口
-		r.GET("SendSms", api.SendSms)
 		r.POST("Ping", api.Ping)
+		r.GET("SendSms", api.SendSms)
 		r.POST("UploadFile", api.UploadFile)
 		r.POST("DeleteFile", api.DeleteFile)
 	}
@@ -48,13 +48,30 @@ func NewRouter() *gin.Engine {
 	s := r.Group("/admin") //后台端接口 server
 	{
 		s.POST("Login", admin.UserPwdLogin)
-		s.POST("UserInfo", admin.UserInfo)
 
 		s.Use(middleware.TokenAuth())
 		s.Use(middleware.AdminAuth()) //是否管理员
 		{
-			//媒体库
+			//甜点管理
 			s.GET("CakeList", admin.GetCakeList)
+
+			//甜点口味
+			s.GET("CakeAttributeList", admin.GetCakeAttributeList)
+			s.POST("CreateCakeAttribute", admin.CreateCakeAttribute)
+			s.POST("UpdateCakeAttribute", admin.UpdateCakeAttribute)
+			s.POST("DeleteCakeAttribute", admin.DeleteCakeAttribute)
+			//甜点品牌
+			s.GET("CakeBrandList", admin.GetCakeBrandList)
+			s.POST("CreateCakeBrand", admin.CreateCakeBrand)
+			s.POST("UpdateCakeBrand", admin.UpdateCakeBrand)
+			s.POST("DeleteCakeBrand", admin.DeleteCakeBrand)
+			//甜点分类
+			s.GET("CakeCategoryList", admin.GetCakeCategoryList)
+			s.POST("CreateCakeCategory", admin.CreateCakeCategory)
+			s.POST("UpdateCakeCategory", admin.UpdateCakeCategory)
+			s.POST("DeleteCakeCategory", admin.DeleteCakeCategory)
+
+			//媒体库
 			s.GET("TagList", admin.GetTagList)
 			s.GET("ImgList", admin.GetImgListForTag)
 			s.POST("ImgTagUpdate", admin.ImgTagUpdate)
@@ -72,7 +89,6 @@ func NewRouter() *gin.Engine {
 		sUser.Use(middleware.TokenAuth())
 		{
 			sUser.POST("Logout", admin.Logout)
-			sUser.POST("Ping", api.Ping)
 		}
 	}
 	return r

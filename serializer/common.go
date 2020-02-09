@@ -2,9 +2,9 @@ package serializer
 
 // Response 基础序列化器
 type Response struct {
-	Code  int         `json:"code"`
-	Msg   string      `json:"msg"`
-	Data  interface{} `json:"data,omitempty"`
+	Code int         `json:"code"`
+	Msg  string      `json:"msg"`
+	Data interface{} `json:"data,omitempty"`
 }
 
 // TrackedErrorResponse 有追踪信息的错误响应
@@ -14,7 +14,6 @@ type TrackedErrorResponse struct {
 }
 
 const (
-
 	//Token保存时间（天）
 	TokenRedisTime = 5
 
@@ -33,8 +32,8 @@ const (
 
 	// 授权失败
 	CodeAuthorizationFailed = 50001
-	CodeTokenIllegalToken = 50008
-	CodeTokenNull = 50005
+	CodeTokenIllegalToken   = 50008
+	CodeTokenNull           = 50005
 
 	//CodeParamErr 各种奇奇怪怪的参数错误
 	CodeParamErr = 40001

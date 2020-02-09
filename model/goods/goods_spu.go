@@ -78,7 +78,7 @@ func GetBasicSpuList(limit, page int) ResBasicCakeInfo {
 // 获取所有SPU信息，返回一个数组
 func GetAllSpuInfo(limit, page int) (SpuInfo []GoodsSpu, count int) {
 	var allSpuInfo []GoodsSpu
-	conf.DB.Model(GoodsSpu{}).Debug().Order("spu_id asc").Limit(limit).Offset((page - 1) * limit).Find(&allSpuInfo)
+	conf.DB.Model(GoodsSpu{}).Debug().Order("spu_id desc").Limit(limit).Offset((page - 1) * limit).Find(&allSpuInfo)
 	conf.DB.Model(GoodsSpu{}).Count(&count)
 	return allSpuInfo, count
 }
