@@ -40,6 +40,16 @@ func PwdLogin(phone, pwd string) serializer.Response {
 	}
 }
 
+// 获取用户信息
+func UserInfo(userId string) serializer.Response {
+	resUserInfo := userModel.GetUserInfo(userId)
+	return serializer.Response{
+		Code:0,
+		Msg:  "获取成功",
+		Data: resUserInfo,
+	}
+}
+
 // 用户登出
 func Logout(token string) serializer.Response {
 	userId := userModel.GetUserIdForToken(token)

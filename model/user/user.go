@@ -105,6 +105,7 @@ func CreateWxUser(wxUserInfo util.WxUserInfo) string {
 	}
 }
 
+// 根据token返回UserId
 func GetUserIdForToken(token string) string {
 	var userId struct {
 		UserId string

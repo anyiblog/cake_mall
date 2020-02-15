@@ -7,11 +7,11 @@ const (
 
 	//短信验证码Type
 
-	SmsRegType       = 484081 //注册
-	SmsLoginType     = 484085 //登录
-	SmsBindPhoneType = 506143 //绑定手机号
-	SmsResetPwdType  = 508003 //重置密码
-	SmsUpdatePwdType = 508008 // 修改密码
+	SmsRegType       = 527632 //注册
+	SmsLoginType     = 527633 //登录
+	SmsBindPhoneType = 527634 //绑定手机号
+	SmsResetPwdType  = 527635 //重置密码
+	SmsUpdatePwdType = 527636 // 修改密码
 
 	//Redis库
 

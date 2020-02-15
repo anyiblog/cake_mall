@@ -50,8 +50,11 @@ func NewRouter() *gin.Engine {
 		s.POST("Login", admin.UserPwdLogin)
 
 		s.Use(middleware.TokenAuth())
-		s.Use(middleware.AdminAuth()) //是否管理员
-		{
+		s.Use(middleware.AdminAuth())
+		{ //Token必须是数据库已有用户，并且是管理员
+
+			s.GET("UserInfo", admin.UserInfo)
+
 			//甜点管理
 			s.GET("CakeList", admin.GetCakeList)
 

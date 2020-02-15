@@ -3,6 +3,7 @@ package admin
 // 后台系统对外API接口
 
 import (
+	"cake_mall/serializer"
 	adminParams "cake_mall/serializer/params/admin"
 	adminService "cake_mall/service/admin"
 	"github.com/gin-gonic/gin"
@@ -30,7 +31,33 @@ func UserPwdLogin(c *gin.Context) {
 	if err := c.ShouldBind(&userLoginParam); err == nil {
 		res := adminService.PwdLogin(userLoginParam.Phone, userLoginParam.Pwd)
 		c.JSON(200, res)
+	} else {
+		c.JSON(200, serializer.Response{
+			Code: 1,
+			Msg:  "请求参数错误",
+			Data: err.Error(),
+		})
 	}
+}
+
+/**
+ * showdoc
+ * @catalog 用户
+ * @title 获取用户信息
+ * @description 获取用户信息接口
+ * @method Get
+ * @url http://cake.anyiblog.com/admin/UserInfo
+ * @header token 必选 string 用户token
+ * @return {"code":0,"msg":"获取成功","data":{}}
+ * @return_param code int 状态码
+ * @return_param msg string 信息
+ * @return_param data object 返回数据
+ * @remark 无
+ */
+func UserInfo(c *gin.Context) {
+	userId, _ := c.Get("userId")
+	res := adminService.UserInfo(userId.(string))
+	c.JSON(200, res)
 }
 
 /**

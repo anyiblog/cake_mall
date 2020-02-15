@@ -1,6 +1,7 @@
 package admin
 
 import (
+	"cake_mall/serializer"
 	adminParams "cake_mall/serializer/params/admin"
 	adminService "cake_mall/service/admin"
 	"github.com/gin-gonic/gin"
@@ -30,6 +31,12 @@ func CreateBanner(c *gin.Context) {
 	if err := c.ShouldBind(&createBannerParam); err == nil {
 		res := adminService.CreateBanner(createBannerParam.BannerName, createBannerParam.BannerDescription, createBannerParam.DeletePermiss)
 		c.JSON(200, res)
+	} else {
+		c.JSON(200, serializer.Response{
+			Code: 1,
+			Msg:  "请求参数错误",
+			Data: err.Error(),
+		})
 	}
 }
 
@@ -57,6 +64,12 @@ func CreateBannerItem(c *gin.Context) {
 	if err := c.ShouldBind(&createBannerItemParam); err == nil {
 		res := adminService.CreateBannerItem(createBannerItemParam.ImgUrl, createBannerItemParam.BannerId, createBannerItemParam.BannerItemType)
 		c.JSON(200, res)
+	} else {
+		c.JSON(200, serializer.Response{
+			Code: 1,
+			Msg:  "请求参数错误",
+			Data: err.Error(),
+		})
 	}
 }
 
@@ -102,6 +115,12 @@ func DeleteBanner(c *gin.Context) {
 	if err := c.ShouldBind(&deleteBannerParam); err == nil {
 		res := adminService.DeleteBanner(deleteBannerParam.BannerId)
 		c.JSON(200, res)
+	} else {
+		c.JSON(200, serializer.Response{
+			Code: 1,
+			Msg:  "请求参数错误",
+			Data: err.Error(),
+		})
 	}
 }
 
@@ -130,5 +149,11 @@ func UpdateBanner(c *gin.Context) {
 	if err := c.ShouldBind(&updateBannerParam); err == nil {
 		res := adminService.UpdateBanner(updateBannerParam.BannerId, updateBannerParam.BannerName, updateBannerParam.BannerDescription, updateBannerParam.DeletePermiss)
 		c.JSON(200, res)
+	} else {
+		c.JSON(200, serializer.Response{
+			Code: 1,
+			Msg:  "请求参数错误",
+			Data: err.Error(),
+		})
 	}
 }

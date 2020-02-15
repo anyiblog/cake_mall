@@ -1,6 +1,7 @@
 package admin
 
 import (
+	"cake_mall/serializer"
 	adminParams "cake_mall/serializer/params/admin"
 	adminService "cake_mall/service/admin"
 	"cake_mall/util"
@@ -77,6 +78,12 @@ func CreateCakeAttribute(c *gin.Context) {
 	if err := c.ShouldBind(&createCakeAttributeParam); err == nil {
 		res := adminService.CreateCakeAttribute(createCakeAttributeParam.AttributeName)
 		c.JSON(200, res)
+	} else {
+		c.JSON(200, serializer.Response{
+			Code: 1,
+			Msg:  "请求参数错误",
+			Data: err.Error(),
+		})
 	}
 }
 
@@ -103,6 +110,12 @@ func UpdateCakeAttribute(c *gin.Context) {
 	if err := c.ShouldBind(&updateCakeAttributeParam); err == nil {
 		res := adminService.UpdateCakeAttribute(updateCakeAttributeParam.AttributeName, updateCakeAttributeParam.AttributeId)
 		c.JSON(200, res)
+	} else {
+		c.JSON(200, serializer.Response{
+			Code: 1,
+			Msg:  "请求参数错误",
+			Data: err.Error(),
+		})
 	}
 }
 
@@ -128,6 +141,12 @@ func DeleteCakeAttribute(c *gin.Context) {
 	if err := c.ShouldBind(&deleteCakeAttributeParam); err == nil {
 		res := adminService.DeleteCakeAttribute(deleteCakeAttributeParam.AttributeId)
 		c.JSON(200, res)
+	} else {
+		c.JSON(200, serializer.Response{
+			Code: 1,
+			Msg:  "请求参数错误",
+			Data: err.Error(),
+		})
 	}
 }
 
@@ -177,6 +196,12 @@ func CreateCakeBrand(c *gin.Context) {
 	if err := c.ShouldBind(&createCakeBrandParam); err == nil {
 		res := adminService.CreateCakeBrand(createCakeBrandParam.BrandName)
 		c.JSON(200, res)
+	} else {
+		c.JSON(200, serializer.Response{
+			Code: 1,
+			Msg:  "请求参数错误",
+			Data: err.Error(),
+		})
 	}
 }
 
@@ -203,6 +228,12 @@ func UpdateCakeBrand(c *gin.Context) {
 	if err := c.ShouldBind(&updateCakeBrandParam); err == nil {
 		res := adminService.UpdateCakeBrand(updateCakeBrandParam.BrandName, updateCakeBrandParam.BrandId)
 		c.JSON(200, res)
+	} else {
+		c.JSON(200, serializer.Response{
+			Code: 1,
+			Msg:  "请求参数错误",
+			Data: err.Error(),
+		})
 	}
 }
 
@@ -228,6 +259,12 @@ func DeleteCakeBrand(c *gin.Context) {
 	if err := c.ShouldBind(&deleteCakeBrandParam); err == nil {
 		res := adminService.DeleteCakeBrand(deleteCakeBrandParam.BrandId)
 		c.JSON(200, res)
+	} else {
+		c.JSON(200, serializer.Response{
+			Code: 1,
+			Msg:  "请求参数错误",
+			Data: err.Error(),
+		})
 	}
 }
 
@@ -277,6 +314,12 @@ func CreateCakeCategory(c *gin.Context) {
 	if err := c.ShouldBind(&createCakeCategoryParam); err == nil {
 		res := adminService.CreateCakeCategory(createCakeCategoryParam.CategoryName)
 		c.JSON(200, res)
+	} else {
+		c.JSON(200, serializer.Response{
+			Code: 1,
+			Msg:  "请求参数错误",
+			Data: err.Error(),
+		})
 	}
 }
 
@@ -303,6 +346,12 @@ func UpdateCakeCategory(c *gin.Context) {
 	if err := c.ShouldBind(&updateCakeCategoryParam); err == nil {
 		res := adminService.UpdateCakeCategory(updateCakeCategoryParam.CategoryName, updateCakeCategoryParam.CategoryId)
 		c.JSON(200, res)
+	} else {
+		c.JSON(200, serializer.Response{
+			Code: 1,
+			Msg:  "请求参数错误",
+			Data: err.Error(),
+		})
 	}
 }
 
@@ -328,5 +377,11 @@ func DeleteCakeCategory(c *gin.Context) {
 	if err := c.ShouldBind(&deleteCakeCategoryParam); err == nil {
 		res := adminService.DeleteCakeCategory(deleteCakeCategoryParam.CategoryId)
 		c.JSON(200, res)
+	} else {
+		c.JSON(200, serializer.Response{
+			Code: 1,
+			Msg:  "请求参数错误",
+			Data: err.Error(),
+		})
 	}
 }

@@ -16,14 +16,12 @@ func Database(connString string) {
 	db.SingularTable(true)
 	// Error
 	if err != nil {
-		panic("连接数据库不成功" + err.Error())
+		panic("连接Mysql失败：" + err.Error())
 	}
-
 	////设置表前缀
 	//gorm.DefaultTableNameHandler = func(db *gorm.DB, defaultTableName string) string {
 	//	return os.Getenv("TABLE_PREFIX") + defaultTableName
 	//}
-
 	//设置连接池
 	//空闲
 	db.DB().SetMaxIdleConns(50)
@@ -31,7 +29,5 @@ func Database(connString string) {
 	db.DB().SetMaxOpenConns(100)
 	//超时
 	db.DB().SetConnMaxLifetime(time.Second * 30)
-
 	DB = db
-
 }

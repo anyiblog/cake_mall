@@ -14,7 +14,7 @@ func AdminAuth() gin.HandlerFunc {
 		} else {
 			c.JSON(200, serializer.Response{
 				Code: serializer.CodeAuthorizationFailed,
-				Msg:  "Authorization failed",
+				Msg:  "该用户暂未拥有管理员权限",
 				Data: nil,
 			})
 			c.Abort()

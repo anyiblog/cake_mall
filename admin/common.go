@@ -1,6 +1,7 @@
 package admin
 
 import (
+	"cake_mall/serializer"
 	adminParams "cake_mall/serializer/params/admin"
 	adminService "cake_mall/service/admin"
 	"cake_mall/util"
@@ -77,5 +78,11 @@ func ImgTagUpdate(c *gin.Context) {
 	if err := c.ShouldBind(&imgTagUpdateParam); err == nil {
 		res := adminService.ImgTagUpdate(imgTagUpdateParam.OldTagId, imgTagUpdateParam.NewTagId, imgTagUpdateParam.ImgId)
 		c.JSON(200, res)
+	}else {
+		c.JSON(200, serializer.Response{
+			Code: 1,
+			Msg:  "请求参数错误",
+			Data: err.Error(),
+		})
 	}
 }
